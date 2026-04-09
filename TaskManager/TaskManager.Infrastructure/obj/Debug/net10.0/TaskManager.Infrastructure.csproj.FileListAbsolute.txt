@@ -1,0 +1,17 @@
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Infrastructure.deps.json
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Infrastructure.dll
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Infrastructure.pdb
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Application.dll
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Domain.dll
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Application.pdb
+E:\lab1\TaskManager\TaskManager.Infrastructure\bin\Debug\net10.0\TaskManager.Domain.pdb
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.csproj.AssemblyReference.cache
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.AssemblyInfoInputs.cache
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.AssemblyInfo.cs
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.csproj.CoreCompileInputs.cache
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskMana.DD0CDC6B.Up2Date
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.dll
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\refint\TaskManager.Infrastructure.dll
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\TaskManager.Infrastructure.pdb
+E:\lab1\TaskManager\TaskManager.Infrastructure\obj\Debug\net10.0\ref\TaskManager.Infrastructure.dll
