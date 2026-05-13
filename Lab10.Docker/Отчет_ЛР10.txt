@@ -1,0 +1,66 @@
+Лабораторная работа №10. Контейнеризация приложения
+
+Содержимое файлов для отчета:
+
+1. Содержимое файла Dockerfile (находится в папке Lab10.Docker/Dockerfile или в проекте Web API):
+=========================================
+# Stage 1: Build (Этап сборки на основе SDK)
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Копируем csproj файлы и восстанавливаем зависимости
+COPY ["Lab5.LibraryApi/Library.Api/Library.Api.csproj", "Lab5.LibraryApi/Library.Api/"]
+COPY ["Lab5.LibraryApi/Library.Data/Library.Data.csproj", "Lab5.LibraryApi/Library.Data/"]
+RUN dotnet restore "Lab5.LibraryApi/Library.Api/Library.Api.csproj"
+
+# Копируем остальные файлы и публикуем проект
+COPY Lab5.LibraryApi/ Lab5.LibraryApi/
+WORKDIR /src/Lab5.LibraryApi/Library.Api
+RUN dotnet publish "Library.Api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# Stage 2: Runtime (Этап публикации на основе ASP.NET Core Runtime)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+
+# Копируем собранное приложение из предыдущего этапа
+COPY --from=build /app/publish .
+
+# Задаем порт 80 внутри контейнера
+ENV ASPNETCORE_URLS=http://+:80
+EXPOSE 80
+
+ENTRYPOINT ["dotnet", "Library.Api.dll"]
+=========================================
+
+
+2. Содержимое файла docker-compose.yml (находится в папке Lab10.Docker/docker-compose.yml):
+=========================================
+services:
+  webapi:
+    build:
+      context: ..
+      dockerfile: Lab10.Docker/Dockerfile
+    container_name: lab10-webapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      # Имя хоста базы данных совпадает с именем сервиса "db"
+      ConnectionStrings__SqlServerConnection: Server=db,1433;Database=LibraryDb;User Id=sa;Password=Your_password123!;TrustServerCertificate=True;Encrypt=False
+    ports:
+      - "8080:80" # Проброс внешнего порта 8080 на внутренний 80 порт контейнера
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: lab10-db
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Your_password123!" # Настройка переменных окружения СУБД
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  sqlserver-data:
+=========================================
